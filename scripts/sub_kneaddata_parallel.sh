@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --account=def-philp3
+#SBATCH --account=3
 #SBATCH --time=05-00:00:00
 #SBATCH --cpus-per-task=40
 #SBATCH --mem=186G
@@ -20,7 +20,7 @@ source $SLURM_TMPDIR/env/bin/activate
 pip install --no-index --upgrade pip
 pip install --no-index -r ../tools/cutadapt_4.2_requirements.txt
 
-main_path="/home/oliv123/scratch/shotgun/data/gem"
+main_path="parent/directory/"
 
 batch="subfolder_identifier"
 
@@ -50,7 +50,7 @@ $HOME/.local/bin/kneaddata --input1 main_path/trimmed_reads/${batch}/n_${acc}_1.
     --output-prefix $acc -t 5 -p 5 --remove-intermediate-output \
     -db ../tools/databases/kneaddata/human_genome \
     -db ../tools/databases/kneaddata/phiX \
-    --trimmomatic /home/oliv123/projects/def-philp3/oliv123/shotgun/tools/Trimmomatic-0.39 \
+    --trimmomatic path/to/Trimmomatic-0.39 \
     --trimmomatic-options="SLIDINGWINDOW:4:20 MINLEN:75" \
     --run-fastqc-start --run-trim-repetitive 
 
